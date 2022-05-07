@@ -66,7 +66,7 @@
                                     <td>{{ $student->dept }}</td>
                                     <td>{{ $student->shift }}</td>
                                     <td>
-                                        <form action="{{ route('student.destroy', $student->id) }}" method="POST">
+                                        <form action="{{ route('student.destroy', $student->id) }}" method="POST" class="d-inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-danger action-btn" onclick="return confirm('Are you sure?')">
@@ -74,11 +74,16 @@
                                             </button>
                                             
                                         </form>
+                                        <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary">
+                                            Edit
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
+                        {{ $students->links() }}
                     </div>
                     <div class="col-md-2"></div>
                 </div>

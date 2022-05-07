@@ -42,17 +42,10 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,  $id = null)
-    {    
+    {   
         $collection = $request->except(['_token','_method']);
 
-        if( ! is_null( $id ) ) 
-        {
-            $this->student->createOrUpdate($id, $collection);
-        }
-        else
-        {
-            $this->student->createOrUpdate($id = null, $collection);
-        }
+        $this->student->create($collection);
 
         return redirect()->back();
     }
@@ -74,10 +67,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
-    {
+    public function edit($id)
+    {    
         $student = $this->student->getStudentById($id);
-        // return View::make('user.edit', compact('user'));
+        return view('student-edit', compact('student'));
     }
 
     /**
@@ -87,9 +80,11 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $collection = $request->except(['_token', '_method']);
+        $this->student->update($id,$collection);
+        return redirect()->route('student.index');
     }
 
     /**

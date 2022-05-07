@@ -11,22 +11,24 @@ class StudentRepository implements StudentRepositoryInterface
 
    public function getAllStudent()
    {
-      return Student::all();
+      return Student::cursorPaginate(10);
    }
 
-   public function createOrUpdate($id = null, $collection = [])
+   public function create($collection = [])
    {
-      if(is_null($id)) {
-         $student = new Student();
-         return $student->fill($collection)->save();
-      }
-      $student = Student::find($id);
+      $student = new Student();
       return $student->fill($collection)->save();
    }
 
    public function getStudentById($id)
    {
       return Student::find($id);
+   }
+
+   public function update($id, $collection = [])
+   {   
+      $student = Student::find($id);
+      return $student->fill($collection)->save();
    }
    
    public function deleteStudent($id)
