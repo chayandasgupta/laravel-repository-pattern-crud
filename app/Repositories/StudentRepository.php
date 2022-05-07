@@ -30,7 +30,7 @@ class StudentRepository implements StudentRepositoryInterface
    }
    
    public function deleteStudent($id)
-   {
+   {  
       return Student::find($id)->delete();
    }
 }

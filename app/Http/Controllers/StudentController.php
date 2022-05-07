@@ -22,7 +22,7 @@ class StudentController extends Controller
     public function index()
     {   
         $students = $this->student->getAllStudent();
-        return view('welcome',  compact('students'));
+        return view('student',  compact('students'));
     }
 
     /**
@@ -99,9 +99,8 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
         $this->student->deleteStudent($id);
-
-        return redirect()->back();
+        return back();
     }
 }

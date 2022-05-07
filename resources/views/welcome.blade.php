@@ -22,58 +22,14 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             
-        <div class="container">
-            <br>
-            <br>
-            <h3 class="text-center">Display answers of form fill in inside a table</h3>
-            <br>
-            <br>
+        <div class="wrap" style="margin-top: 50px">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <form action="{{ route('student.store') }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input id="fName" name="name" class="form-control form-control-sm" />
-                            </div>
-                            <div class="form-group">
-                                <label>Dept.</label>
-                                <input name="dept" id="gender" class="form-control form-control-sm" />
-                            </div>
-                            <div class="form-group">
-                                <label>Shift</label>
-                                <input name="shift" id="age" class="form-control form-control-sm" />
-                            </div>
-                            <button type="submit" id ="display" class="btn btn-sm btn-primary">Display</button>
-                        </form>
-                        <br>
-                        <br>
-                        <table  class="table table-bordered" id= "table" >
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Dept</th>
-                                    <th>Shift</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($students as $key=>$student)
-                                <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $student->name }}</td>
-                                    <td>{{ $student->dept }}</td>
-                                    <td>{{ $student->shift }}</td>
-                                    <td>
-                                        <button class="bg-danger border-none">Delete</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="col-md-8 m-auto">
+                        <a href="{{ route('student.index') }}">
+                            <button class="btn btn-success border-0">Add Student</button>
+                        </a>
                     </div>
-                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
